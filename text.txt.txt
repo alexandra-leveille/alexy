@@ -128,4 +128,7 @@ VALUES
   dev-976497
 
 
-google map = https://alligator.io/vuejs/vue-google-maps/ 
+google map = https://alligator.io/vuejs/vue-google-maps/
+
+
+tutorial git ssh = https://help.github.com/articles/checking-for-existing-ssh-keys/
