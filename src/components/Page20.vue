@@ -51,11 +51,31 @@
 
 <!-- ////////////////////////editModal////////////////////////// -->
 
+<div class="modal" id="editModal" v-if="showingEditModal">
+  <p> Adding a New Command </p>
+  <button @click="showingEditModal = false" type="button" name="button" class="close"><i class="fas fa-times"></i></button>
+<table class="form">
+  <tr>
+    <th> Command name </th>
+    <td> <input type="text" name="" value="" v-model="clickedCommand.name">  </td>
+  </tr>
 
+
+  <tr>
+    <th> Command lieux </th>
+    <td> <input type="text" name="" value="" v-model="clickedCommand.lieux"> </td>
+  </tr>
+
+
+  <tr>
+    <td> <button @click="showingEditModal= false; updateCommand();" type="button" name="button"> Update </button> </td>
+  </tr>
+</table>
+</div>
 
 
 <!-- ///////////////////////deleteMODAL////////////////////////// -->
-<div class="deleteModal" v-if="showingDeleteModal">
+<div class="modal" id="deleteModal" v-if="showingDeleteModal">
   <button @click="showingDeleteModal= false" type="button" name="button" class="close"> <i class="fas fa-times"></i></button>
 <p> Are you sure you want to delete you command </p>
 <button type="button" name="button" @click="showingDeleteModal = false; deleteCommand()"> Yes </button>
@@ -75,10 +95,11 @@ export default {
   data (){
     return {
     showingAddModal:false,
+    showingEditModal:false,
     showingDeleteModal:false,
     command:[],
     newCommand: {name:'', lieux:''},
-    clickedCmd:{}
+    clickedCommand:{}
     }
   },
   mounted: function(){
@@ -113,17 +134,35 @@ createCommand: function(){
     }
   })
 },
+updateCommand: function(){
+  console.log('we are here to update command');
+  console.log('UPDATE this.clickedCommand', this.clickedCommand);
+  console.log('UPDATE this.clickedCommand.id', this.clickedCommand.id);
+  console.log('UPDATE this.clickedCommand.name', this.clickedCommand.name);
+  console.log('UPDATE this.clickedCommand.lieux', this.clickedCommand.lieux);
+  axios.put('http://localhost:3007/command/'+ this.clickedCommand.id, this.clickedCommand).then((response) => {
+    console.log('from update response', response);
+    this.clickedCommand = {};
+    if (response.data.error) {
+      console.log('error in update');
+      app.errorMessage = response.data.message;
+    } else {
+      console.log('no error in update');
+      app.sucessMessage = response.data.message
+    }
+  })
+},
 selectCmd(cmd){
-  this.clickedCmd = cmd;
+  this.clickedCommand = cmd;
   console.log('cmd.id',cmd.id);
   console.log('cmd.name',cmd.name);
   console.log('cmd.lieux',cmd.lieux);
 },
 deleteCommand:function(){
   console.log('/////// deleteCommand ///// ');
-  axios.delete('http://localhost:3007/command/'+ this.clickedCmd.id).then((response) => {
+  axios.delete('http://localhost:3007/command/'+ this.clickedCommand.id).then((response) => {
     console.log('delete response', response);
-    this.clickedCmd = {};
+    this.clickedCommand = {};
     if (response.data.error) {
       console.log('Error in Delete');
       app.errorMessage = response.data.message;
@@ -164,7 +203,7 @@ button.map{
   float: right;
 }
 
-#addModal{
+#addModal, #deleteModal, #editModal{
   height: 25vh;
   width: 35vw;;
   border: 2px solid;
@@ -178,7 +217,7 @@ button.map{
 
 }
 
-#addModal button.close{
+#addModal button.close, #editModal button.close{
   float: right;
 margin-top: 0;
 border: none;
@@ -188,7 +227,16 @@ margin: 0;
 margin-top: -56px;
 }
 
-#addModal table.form{
+ #deleteModal button.close{
+   float: right;
+ margin-top: 0;
+ border: none;
+ margin-top: 100px;
+ background: red;
+ margin: 0;
+ }
+
+#addModal table.form, #deleteModal table.form, #editModal table.form {
   margin: auto;
 }
 </style>
