@@ -282,20 +282,22 @@ a {
   min-height: 333px;
   padding: 44px;
 }
-
 table.list{
-  width: 100%;
-  margin-top: 33px;
+border: 2px solid;
+width: 60vw;
+height: auto;
+margin: auto;
 }
+
 
 table.list th{
   background: orangered;
   color: whitesmoke;
+  opacity: 0.5;
 }
 
 table.list td{
-  padding:9px;
-  background: lime;
+  background: rgba(192,192,192,0.2);
   text-align: center;
 }
 
@@ -313,27 +315,22 @@ table.form input{
 }
 
 .fa-plus-square, .fa-times-circle{
-  border: 2px solid;
-  font-size: 4vw;
-  color: deeppink;
+  font-size: 2vw;
 }
 
-button.fa-plus-square, button.fa-times-circle{
+button{
   background: none;
+  border: 1px solid;
 }
 
 button .fa-pen-nib, button .fa-trash{
   height: 9vh;
   width: 8vh;
-  border-radius: 50%;
-  background: none;
-  border: 2px solid;
-  line-height: 9vh
+  line-height: 9vh;
 }
 
 .fa-pen-nib, .fa-trash{
-  font-size: 30px;
-  color: deeppink;
+  font-size: 15px
 }
 
 

@@ -214,7 +214,6 @@ button.map{
   right: 0;
   bottom: 0;
   background: cornflowerblue;
-
 }
 
 #addModal button.close, #editModal button.close{
