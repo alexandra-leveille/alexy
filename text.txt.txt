@@ -1,0 +1,131 @@
+okta version 1 = https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node
+
+https://github.com/axios/axios/issues/1529
+Help on vue-google-maps : https://github.com/xkjyeah/vue-google-maps/issues/181
+
+path to dist = C:\Users\Hi 2017\alexy\dist
+this.endpointUrl = 'http://app:5000';
+const options: AxiosRequestConfig = {
+    method: 'POST',
+    url: `${this.endpointUrl}/session/get`,
+    data: {
+        'client': 'alexa'
+    },
+    responseType: 'json'
+};
+
+axios(options)
+    .then((response: AxiosResponse<any>) => {
+        console.log(`[SessionService][getSession]: "/session/get" responseData = ${JSON.stringify(response.data)}`);
+    })
+    .catch(err => {
+        console.error(`[SessionService][getSession]: error = ${err}`);
+    });
+
+OKTA = https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node
+vue google maps = https://www.npmjs.com/package/vue2-google-maps
+
+Api google maps = AIzaSyBkcg913HkHG-5aHYeow1Vj9XWSFBFlF7A
+Connect as such = http://192.168.99.100:8087/?pgsql=db&username=alexy&db=alexydb&ns=public&select=users
+////////////////////////////////////////////////////////////////////
+la arrow function elle est transparente t n'apas de this et prend le this au dessus
+elle est
+
+la function classique a un scope et a un this defini
+
+
+///////////////////////// other synthaxe  ///////////////////////
+import axios from 'axios'
+const hello = {
+  name: 'HelloWorld',
+  data () {
+    return {
+      showingAddModal:false,
+      showingEditModal:false,
+      showingDeleteModal:false,
+      msg: 'Hello guys',
+      users:[],
+      newUser: {username:'', email:'', mobile:''},
+      clickedUser:{}
+    }
+  },
+  mounted:function(){
+    console.log("mounted for now");
+    this.getUsers();
+  },
+  methods:{
+    getUsers:function(){
+      // comment faire la difference entre laction get post or ...
+      axios.get('http://localhost:3007/users/').then((response) => {
+        console.log(response);
+        if (response.data.error){
+          console.log('error');
+          app.errorMessage = response.data.message;
+        } else{
+          console.log('no error');
+          //console.log('APP USERS',this);
+          console.log('APP USERS',this.users);
+          this.users = response.data.rows;
+          console.log('sucess', response.data.rows);
+        }
+      })
+    }
+  }
+}
+export default hello;
+
+
+///////////////////////////////////////////////////////////////////////////////
+Help for git  http://rogerdudler.github.io/git-guide/
+Git hub Guide
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////// exemple type of delete users //////////////////////
+
+deleteUser:function(){
+  console.log('va delete element');
+  //console.log(app.clickedUser);
+  console.log('LIGNE 192 this.clickedUser',this.clickedUser);
+  //var formData = this.toFormData(this.clickedUser);
+  axios.post('http://localhost:3007/users/', this.clickedUser).then((response) => {
+    console.log('LIGNE 195 this.clickedUser',this.clickedUser);
+    console.log(response);
+    this.clickedUser = {};
+    if (response.data.error) {
+      app.errorMessage = response.data.message;
+    } else {
+      this.getUsers();
+    }
+  })
+},
+
+/////////////// insert users ///////////////
+
+INSERT INTO users
+  (firstname, lastname)
+VALUES
+  ('David', 'Ostermann'),
+  ('Faustino', 'Kialungila'),
+  ('Paljor', 'Tsang'),
+  ('Gaelle', 'Meric'),
+  ('Joffrey', 'Gitau'),
+  ('Mehdi', 'Druon'),
+  ('Martin', 'Eon'),
+  ('Julien', 'Grach');
+
+
+  /////////////OKAT INFO /////////////
+
+
+  Username: assdin504@gmail.com
+  Temporary password: ANx6g2PJ // Holysmartness407
+
+  year 2000 london
+  dev-976497.oktapreview.com
+  dev-976497
+
+
+google map = https://alligator.io/vuejs/vue-google-maps/ 
