@@ -5,7 +5,7 @@ const defaultListId = 1;
 module.exports = {
 
   getUsers() {
-    return db.query('SELECT * FROM users ORDER BY id')
+    return db.query('SELECT * FROM users ORDER BY id');
   },
   createUser({ firstname, lastname }) {
     return db.query(`

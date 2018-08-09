@@ -72,6 +72,11 @@ font-family: 'Poppins', sans-serif;
   margin-top: 60px;
 }
 
+#full{
+  max-width: 100%;
+  height: auto;
+}
+
 nav.nav{
   margin-top: -40px;
   margin-bottom: 5%;
@@ -89,10 +94,10 @@ nav ul.list {
 nav ul li.item{
   display: block;
   float: left;
-  height: 30px;
-  line-height: 30px;
+  height: auto;
+  max-width: auto;
+  line-height: 9vh;
   text-align: center;
-  width: 8vw;
   margin-right: 1vw;
   border: 2px solid;
 }
@@ -100,7 +105,7 @@ nav ul li.item{
 nav ul li.item a{
   color: black;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 2vw;
   transition: 1s;
 }
 nav ul li.item a:hover{

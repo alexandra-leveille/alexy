@@ -1,4 +1,5 @@
 // jshint esversion:6
+console.log('models/command');
 const db = require ('./db')
 module.exports = {
   getCommand(){

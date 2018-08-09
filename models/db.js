@@ -10,4 +10,14 @@ db.connect((err) => {
   console.log('DB CONNECTED ALEXY SO GREAT!!!!')
 })
 
+db.unwrapQuery = (sql) =>{
+  return db.query(sql)
+  .then( results => results.rows )
+  .catch( err => Promise.reject(err) );
+  console.log(results.rows)
+};
+
+
+
+
 module.exports = db

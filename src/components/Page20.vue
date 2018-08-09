@@ -2,6 +2,8 @@
   <div class="page20">
   <h1> Page 20 </h1>
 
+  <p> Table of command </p>
+
 
   <button class="map" type="button" name="button" @click="showingAddModal= true"> <i class="fas fa-map-marked-alt"></i></button>
   <table class="table">
