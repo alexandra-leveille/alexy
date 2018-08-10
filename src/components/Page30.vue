@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style>
 table.list{
 border: 2px solid;
 width: 60vw;

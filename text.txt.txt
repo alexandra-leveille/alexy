@@ -280,3 +280,45 @@ four:
    {"id": 3,"name": "ngbvb frbf b","command": [{"id": 4,"name": "Delta"},{"id": 1,"name": "Alpha100"}]},
    {"id": 2,"name": "bnhmng gbn gbf","command": [{"id": 1,"name": "Alpha100"},{"id": 2,"name": "Ceta"},{"id": 3,"name": "Beta"}]}
    ]
+
+
+//////////////////// getUsersNameCommandById /////////////////
+getUsersNameCommandById(id){
+return db.query(`
+  SELECT users.id,
+  CONCAT(users.lastname,' ', users.firstname) as name,
+  json_agg(json_build_object('id', users_command.command_id, 'name', command.name)) as command
+  FROM users
+  JOIN users_command ON users.id = users_command.user_id
+  JOIN command ON command.id = users_command.command_id
+  WHERE users.id=${id}
+    GROUP BY users.id;
+  `)
+},
+
+
+.get('/name/:id', (req,res) => {
+  const { id } = req.params;
+  model.getUsersNameCommandById(id)
+  .then(result => {res.json(result);
+    console.log('///////////');
+    console.log(result)
+  }).catch(err => res.json(err))
+  console.log('///////////');
+})
+
+
+this better rather
+.get('/name/:id', (req,res) => {
+  const { id } = req.params;
+  model.getUsersNameCommandById(id)
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+})
+
+
+/////////////////////
+ranges:[
+  {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]}
+]
+/////////////////////

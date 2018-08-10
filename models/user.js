@@ -16,9 +16,19 @@ FROM users
 JOIN users_command ON users.id = users_command.user_id
 JOIN command ON command.id = users_command.command_id
 GROUP BY users.id;
-`)
-  },
-
+`)},
+getUsersNameCommandById(id){
+return db.query(`
+  SELECT users.id,
+  CONCAT(users.lastname,' ', users.firstname) as name,
+  json_agg(json_build_object('id', users_command.command_id, 'name', command.name)) as command
+  FROM users
+  JOIN users_command ON users.id = users_command.user_id
+  JOIN command ON command.id = users_command.command_id
+  WHERE users.id=${id}
+    GROUP BY users.id;
+  `)
+},
   createUser({ firstname, lastname }) {
     return db.query(`
     INSERT INTO users(firstname, lastname)
