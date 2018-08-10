@@ -322,3 +322,32 @@ ranges:[
   {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]}
 ]
 /////////////////////
+
+
+entire methods
+getUsersNameCommandById:function(){
+  axios.get('http://localhost:3007/users/name/3').then((response) => {
+    //console.log('getUsersNameCommandById', response);
+    if (response.data.error) {
+      app.errorMessage = response.data.message;
+      console.log('ERROR getUsersNameCommandById');
+    } else {
+      console.log('SUCESS SO', response.data.rows);
+      this.ranges = response.data.rows;
+      console.log('---------- this.ranges is the following ----------');
+      console.log(this.ranges);
+      console.log('---------- this.ranges is the following[0] ----------');
+      console.log(this.ranges[0]);
+      console.log('---------- this.ranges is the following[0].command ----------');
+      console.log(this.ranges[0].command);
+      console.log('---------- this.ranges is the following[0].id ----------');
+      console.log(this.ranges[0].id);
+      console.log('---------- this.ranges is the following[0].name ----------');
+      console.log(this.ranges[0].name);
+    }
+  })
+}
+
+
+
+axios.get('http://localhost:3007/users/name/'+ this.ranges[0].id).then((response) => {

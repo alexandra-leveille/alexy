@@ -1,0 +1,37 @@
+trial with equiv of a clicked Users<script>
+import axios from 'axios'
+export default {
+  name:'Page40',
+  data () {
+    return {
+      ranges:[],
+      loggedUser:{}
+    }
+  },
+  mounted:function(){
+    console.log('mounted from page 40');
+    this.getUsersNameCommandById();
+  },
+  methods:{
+    getUsersNameCommandById:function(){
+      axios.get('http://localhost:3007/users/name/'+ this.ranges[0].id).then((response) => {
+        //console.log('getUsersNameCommandById', response);
+        this.ranges[0].id = {};
+        this.loggedUser = {};
+        if (response.data.error) {
+          app.errorMessage = response.data.message;
+          console.log('ERROR getUsersNameCommandById');
+        } else {
+          console.log('SUCESS SO', response.data.rows);
+          this.ranges = response.data.rows;
+          console.log('l id de luser est le suivant ', this.ranges[0].id);
+        }
+      })
+    },
+    loggedUser(user) {
+      this.ranges[0].id = user;
+      console.log('user id');
+    }
+  }
+}
+</script>

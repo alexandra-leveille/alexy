@@ -28,6 +28,7 @@
     </tr>
 
   </table>
+
   </div>
 </template>
 
@@ -37,6 +38,7 @@ export default {
   name:'Page30',
   data () {
     return {
+      showingAddModal:false,
       names:[]
     }
   },
@@ -93,10 +95,5 @@ table.list ul.list{
   color: red;
   font-size: 1vw;
 }
-
-
-
-
-
 
 </style>

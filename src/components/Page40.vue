@@ -3,6 +3,8 @@
   <h1> Page 40 </h1>
   <p> Page filtered by Id depending on which command</p>
 
+<p> Your are currently logged as Users number <span class="span"> {{ this.ranges[0].id }} </span>  Buddy </p>
+
 
 
 <table class="list">
@@ -27,14 +29,6 @@
 </td>
   </tr>
 </table>
-
-
-
-
-
-
-
-
   </div>
 </template>
 
@@ -48,19 +42,23 @@ export default {
     }
   },
   mounted:function(){
-    console.log('mounted from page 40');
+    console.log('mounted from page 40 Au mounted users-id');
     this.getUsersNameCommandById();
   },
   methods:{
-    getUsersNameCommandById:function(){
-      axios.get('http://localhost:3007/users/name/3').then((response) => {
-        console.log('getUsersNameCommandById', response);
+    getUsersNameCommandById:function(id){
+      axios.get('http://localhost:3007/users/name/'+ sessionStorage.user).then((response) => {
+        //console.log('getUsersNameCommandById', response);
         if (response.data.error) {
           app.errorMessage = response.data.message;
           console.log('ERROR getUsersNameCommandById');
         } else {
           console.log('SUCESS SO', response.data.rows);
           this.ranges = response.data.rows;
+          console.log('l id de luser est le suivant ', this.ranges[0].id);
+          var loggedUser = this.ranges[0].id;
+          console.log( ' loggedUser ==>', loggedUser );
+          this.loggedUser = {};
         }
       })
     }
@@ -76,7 +74,6 @@ height: auto;
 margin: auto;
 }
 
-
 table.list th{
   background: #0f87ff;
   color: black;
@@ -91,5 +88,11 @@ table li {
 table.list ul.list{
   color: orangered;
   font-size: 1vw;
+}
+
+span.span{
+  font-size: 2vw;
+  color: orangered;
+  font-weight: 900;
 }
 </style>
