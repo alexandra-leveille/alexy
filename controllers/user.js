@@ -9,6 +9,11 @@ module.exports = express.Router()
       .then(result => res.json(result))
       .catch(err => res.json(err))
   })
+.get('/name', (req,res) => {
+  model.getUsersNameCommand()
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+})
   .post('/', (req, res) => {
     const { lastname, firstname } = req.body;
     model.createUser({ firstname, lastname })

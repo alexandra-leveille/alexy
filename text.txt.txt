@@ -212,3 +212,71 @@ user.deleteUser = id => {
 module.exports = user;
 
 ////////////////////////////////////////////////////////////////////////////////
+parser de tableau
+for (var i = 0; i < names.length; i++) {
+  console.log(names[i]);
+}
+
+for (var i = 0; i < names.length; i++) {
+  console.log(names[i].id);
+}
+
+for (var i = 0; i < names.length; i++) {
+  console.log(names[i].name);
+}
+
+for (var i = 0; i < names.length; i++) {
+  console.log(names[i].command);
+}
+
+
+var newCommand = []
+for (var i = 0; i < names.length; i++) {
+  console.log(names[i].command);
+  newCommand.push(names[i].command)
+}
+
+for (var i = 0; i < newCommand.length; i++) {
+  console.log(newCommand[i]);
+}
+for (var i = 0; i < newCommand.length; i++) {
+  console.log(newCommand[i]);
+}
+
+
+ensuite
+
+<td> {{name.command}}
+<ul>
+<li v-for="command in name.command"> {{ command.name}}</li>
+</ul>
+ </td>
+ </ul>
+
+
+ <td v-for="command in name.command"> {{ command.name}} </td>
+one <td> {{name.command}} </td>
+two :
+ <ul>
+<li v-for="command in name.command"> {{ command.name}}</li>
+</ul>
+three :
+<ul  v-for="command in name.command">
+<li> {{ command.name}} </li>
+</ul>
+
+
+four:
+<ul>
+<li v-for="command in name.command">
+<p> Nom de la commande : </p> {{ command.name}}
+
+</li>
+</ul>
+///////////////////////////////////////////////////////////////
+ tableau en dur
+ [
+   {"id": 1,"name": "Christophe Allios","command": [{"id": 3,"name": "Beta"},{"id": 1,"name": "Alpha100"},{"id": 4,"name": "Delta"}]},
+   {"id": 3,"name": "ngbvb frbf b","command": [{"id": 4,"name": "Delta"},{"id": 1,"name": "Alpha100"}]},
+   {"id": 2,"name": "bnhmng gbn gbf","command": [{"id": 1,"name": "Alpha100"},{"id": 2,"name": "Ceta"},{"id": 3,"name": "Beta"}]}
+   ]
