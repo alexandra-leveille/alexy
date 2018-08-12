@@ -10,6 +10,7 @@ import Front from '@/components/Front'
 import Page10 from '@/components/Page10'
 import Page20 from '@/components/Page20'
 import Page30 from '@/components/Page30'
+import Page301 from '@/components/Page301'
 import Page40 from '@/components/Page40'
 
 // import Page from '../../index2.html' need a specific loader
@@ -61,6 +62,11 @@ const router = new Router({
       path: '/Page30',
       name: 'Page30',
       component: Page30
+    },
+    {
+      path: '/Page301',
+      name: 'Page301',
+      component: Page301
     },
     {
       path: '/Page40',

@@ -3,7 +3,6 @@
     <h1>{{ msg }}</h1>
 <p> {{ table }} </p>
 <button class="fright addNew" @click="showingAddModal = true"> <i class="fas fa-plus-square"></i>
-
  </button>
 
 <table class="list">
@@ -170,7 +169,7 @@ export default {
       // on a besoin de passer l'argument en deuxieme parametre
       axios.post('http://localhost:3007/users/', this.newUser).then((response) => {
       console.log(' 1- saveUser', response);
-      console.log(' 2 - formData II',formData);
+      console.log(' 2 - formData II', formData);
       console.log(' 3 - this.newUser LIGNE 173', this.newUser);
       this.newUser = {firstname:'', lastname:''};
         if (response.data.error) {

@@ -26,6 +26,23 @@ module.exports = express.Router()
       .then(result => res.send(result))
       .catch(err => console.log(err))
   })
+.post('/',(req, res) => {
+  const { id, name, command } = req.body;
+  model.createUsersNameCommand({  id, name, command })
+  .then(result => res.send(result))
+  .catch(err => console.log(err))
+})
+
+
+
+
+
+
+
+
+
+
+
   /**
    * Move a card
    */

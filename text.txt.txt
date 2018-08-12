@@ -1,3 +1,8 @@
+just in case docker is doing pulling fs layer
+docker-machine restart
+docker-machine env
+@FOR /f "tokens=*" %i IN ('docker-machine env') DO @%i
+
 okta version 1 = https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node
 
 https://github.com/axios/axios/issues/1529
@@ -279,6 +284,7 @@ four:
    {"id": 1,"name": "Christophe Allios","command": [{"id": 3,"name": "Beta"},{"id": 1,"name": "Alpha100"},{"id": 4,"name": "Delta"}]},
    {"id": 3,"name": "ngbvb frbf b","command": [{"id": 4,"name": "Delta"},{"id": 1,"name": "Alpha100"}]},
    {"id": 2,"name": "bnhmng gbn gbf","command": [{"id": 1,"name": "Alpha100"},{"id": 2,"name": "Ceta"},{"id": 3,"name": "Beta"}]}
+
    ]
 
 
@@ -351,3 +357,41 @@ getUsersNameCommandById:function(){
 
 
 axios.get('http://localhost:3007/users/name/'+ this.ranges[0].id).then((response) => {
+axios.get('http://localhost:3007/users/name/'+ sessionStorage.user).then((response) => {
+
+
+
+
+///////////////////////////// dependencies in package.json ///////////////////
+"@okta/okta-vue": "^1.0.0",
+"axios": "^0.18.0",
+"bootstrap-vue": "^2.0.0-rc.11",
+"cors": "^2.8.4",
+"express": "^4.16.3",
+"pg": "^7.4.1",
+"vue": "^2.5.2",
+"vue-router": "^3.0.1",
+"vue2-google-maps": "^0.10.1",
+"vuetify": "^1.1.1"
+
+//////////////////////////////////////////////////////////////////////////////
+Use this inside of data()
+UsersNameCommand: {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]},
+UsersNameCommand: {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]}
+what we can put on for sure
+<p> This is the list of what we have </p>
+<p> {{UsersNameCommand.id}} </p>
+<p> {{UsersNameCommand.name}} </p>
+<p> {{UsersNameCommand.command}}</p>
+<ul class="list">
+  <li v-for="rest in UsersNameCommand.command" >
+<p> {{rest.name}} </p>
+  </li>
+</ul>
+
+AND ALSO
+<ul class="list">
+  <li v-for="rest in UsersNameCommand.command">
+  <input type="text" name="" value="" v-model="rest.name">
+  </li>
+</ul>

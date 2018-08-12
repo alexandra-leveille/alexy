@@ -29,11 +29,34 @@ return db.query(`
     GROUP BY users.id;
   `)
 },
+
+
+
+
+
+
+
+
+
+
   createUser({ firstname, lastname }) {
     return db.query(`
     INSERT INTO users(firstname, lastname)
     VALUES ('${firstname}', '${lastname}')`)
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
   updateUser({ id, firstname, lastname }) {
     return db.query(`
     UPDATE users

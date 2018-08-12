@@ -1,3 +1,7 @@
+Open navigator > F12 > Application > SessionStorage >
+key = user || value = 2
+
+
 trial with equiv of a clicked Users<script>
 import axios from 'axios'
 export default {

@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="page30">
+  <div class="page301">
   <h1> Page 30  Table of Name Command </h1>
   <p> Nice Try - Equiv de Page recapitulative</p>
-  Need to create a special table 
+  Need to create a special table
   <button class="fright addNew" @click="showingAddModal = true"> <i class="fas fa-plus-square"></i>
    </button>
 
@@ -75,7 +75,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name:'Page30',
+  name:'Page301',
   data () {
     return {
       showingAddModal:false,
@@ -130,18 +130,18 @@ margin: auto;
 
 
 table.list th{
-  background: lightpink;
+  background: coral;
   color: black;
   opacity: 0.5;
 }
 
 table.list td:nth-child(even){
-  background: rgba(192,192,192,0.2);
+  background: rgba(165,27,112,0.3);
   text-align: center;
 }
 
 table.list td:nth-child(odd){
-  background: rgba(120,120,120,0.2);
+  background: rgba(87,101,10,0.4);
   text-align: center;
 }
 
@@ -164,7 +164,7 @@ table.list td button{
 
 table.list td button:hover{
   transition: 1s;
-  background: lightpink;
+  background: springgreen;
 }
 
 .modal#addModal{
@@ -174,7 +174,7 @@ table.list td button:hover{
   margin: auto;
   position: fixed;
   top: 0;
-  background: rgba(247,208,228,0.3);
+  background: rgba(210,114,16,0.3);
 }
 
 .modal .title{

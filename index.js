@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 // })
 
 app.get('/', (req,res) => {
-  res.send('Effectuated')
+  res.send('on port 3007')
 })
 
 app.use('/users', require('./controllers/user.js'))
