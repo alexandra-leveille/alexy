@@ -3,9 +3,27 @@
   <h1> Page 40 </h1>
   <p> Page filtered by Id depending on which command</p>
 
-<p> Your are currently logged as Users number <span class="span"> {{ this.ranges[0].id }} </span>  Buddy </p>
+<p> Your are currently logged as User number <span class="span"> {{ this.ranges[0].id }} </span>  Buddy </p>
+
+<p> Here is Range en RAW Mode </p>
+<p> {{ ranges }}</p>
+
+<div class="">
+  <h2> Hello here are your different loggin informations </h2>
+
+    <h3 v-for="range in ranges">
+  <p> You are user number {{ range.id }}</p>
+  <p> Your names is : {{range.name}}  </p>
+<p> Your commands are just the following : {{range.command}}</p>
+<li v-for="order in range.command ">
+order number {{order.id}} corresponds to {{order.name}}
+
+</li>
 
 
+
+</h3>
+</div>
 
 <table class="list">
   <tr>
@@ -56,6 +74,7 @@ export default {
           console.log('SUCESS SO', response.data.rows);
           this.ranges = response.data.rows;
           console.log('l id de luser est le suivant ', this.ranges[0].id);
+          console.log('l id de luser est le suivant ', this.ranges.id);
           var loggedUser = this.ranges[0].id;
           console.log( ' loggedUser ==>', loggedUser );
           this.loggedUser = {};
