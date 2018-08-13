@@ -395,3 +395,8 @@ AND ALSO
   <input type="text" name="" value="" v-model="rest.name">
   </li>
 </ul>
+
+
+<li v-for="rest in UsersNameCommand.command">
+<input type="text" name="" value="" v-model="rest.name">
+</li>

@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="page301">
-  <h1> Page 30  Table of Name Command </h1>
+  <h1> Table of Name Command </h1>
+  <p> SIMPLE DISPLAY FROM OUR INNER JOIN </p>
   <p> Nice Try - Equiv de Page recapitulative</p>
   Need to create a special table
-  <button class="fright addNew" @click="showingAddModal = true"> <i class="fas fa-plus-square"></i>
    </button>
 
   <table class="list">
@@ -21,7 +21,8 @@
       <td>
       <ul class="list">
       <li v-for="command in name.command">
-      {{ command.name}}
+      <!-- {{ command.id}} : {{ command.name}} -->
+      {{command.id}} : {{command.name}}
       </li>
       </ul>
       </td>
@@ -32,30 +33,10 @@
 
 
 <!-- /////////////////////////// showingAddModal /////////////////////////// -->
-<div class="modal" id="addModal" v-if="showingAddModal">
-  <h2 class="title"> Add a New UserCommand <button class="fright close" @click="showingAddModal = false"> <i class="fas fa-times-circle"></i> </button> </h2>
-<br>
-
-<table class="form2">
-<label for=""> id </label>
-<input type="text" name="" value="" v-model="UsersNameCommand.id">
-<br>
-<label for=""> Name </label>
-<input type="text" name="" value="" v-model="UsersNameCommand.name">
-<br>
-<label for=""> Comamnds </label>
-<li v-for="rest in UsersNameCommand.command">
-<input type="text" name="" value="" v-model="rest.name">
-</li>
-
-<button @click="showingAddModal = false; createUsersNameCommand()" type="button" name="button"> Save </button>
-</table>
-</div>
 
 <!-- /////////////////////////////////////////////////////////////////////////////// -->
 
 
-   <!-- {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]} -->
 
 
 
@@ -78,10 +59,6 @@ export default {
   name:'Page301',
   data () {
     return {
-      showingAddModal:false,
-      //UsersNameCommand: {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]},
-      // create a table = insert dinnes => CRUD THEM
-      UsersNameCommand: {id:'',name:'', command:[{id:'',name:''},{id:'',name: ''}]},
       names:[]
     }
   },
@@ -100,20 +77,6 @@ export default {
           this.names = response.data.rows;
         }
       })
-    },
-    createUsersNameCommand: function(){
-      // equiv of an insert inside of  A TABLE getUsersNameCommand() - a table which dos not exist AT ALL
-      console.log("createUsersNameCommand");
-      axios.post('http://localhost:3007/users/name', this.UsersNameCommand).then((response) => {
-      console.log('ligne 104', response);
-      //   this.UsersNameCommand = {id:'', name:'', command:[{id:'',name:''},{id:'',name: ''}]};
-      //   if (response.data.error) {
-      //     console.log('createUsersNameCommand  ERROR');
-      //   } else {
-      //     console.log('createUsersNameCommand NO ERROR');
-      //     this.getUsersNameCommand();
-      //   }
-       })
     }
 
   }

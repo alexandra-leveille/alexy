@@ -1,8 +1,9 @@
 <template lang="html">
   <div class="page30">
   <h1> Page 30  Table of Name Command </h1>
+  <p> Wor out with our table display2_command </p>
   <p> Nice Try - Equiv de Page recapitulative</p>
-  Need to create a special table 
+  Need to create a special table
   <button class="fright addNew" @click="showingAddModal = true"> <i class="fas fa-plus-square"></i>
    </button>
 
@@ -16,17 +17,11 @@
     </tr>
 
     <tr v-for="name in names">
-      <td> {{name.id}} </td>
-      <td> {{name.name}} </td>
-      <td>
-      <ul class="list">
-      <li v-for="command in name.command">
-      {{ command.name}}
-      </li>
-      </ul>
-      </td>
-      <td> <button type="button" name="button"> /...  </button>  </td>
-      <td> <button type="button" name="button"> X </button> </td>
+      <td> {{name.user_id}} </td>
+      <td> {{name.user_name}} </td>
+      <td> {{name.command_name}} </td>
+      <td> <button @click="showingEditModal = true;selectUsersNameCommand(name)" type="button" name="button"> /...  </button>  </td>
+      <td> <button @click="showingDeleteModal = true;selectUsersNameCommand(name)" type="button" name="button"> X </button> </td>
     </tr>
   </table>
 
@@ -38,24 +33,49 @@
 
 <table class="form2">
 <label for=""> id </label>
-<input type="text" name="" value="" v-model="UsersNameCommand.id">
+<input type="text" name="" value="" v-model="usersNameCommand.user_id">
 <br>
 <label for=""> Name </label>
-<input type="text" name="" value="" v-model="UsersNameCommand.name">
+<input type="text" name="" value="" v-model="usersNameCommand.user_name">
 <br>
 <label for=""> Comamnds </label>
-<li v-for="rest in UsersNameCommand.command">
-<input type="text" name="" value="" v-model="rest.name">
-</li>
+<input type="text" name="" value="" v-model="usersNameCommand.command_name">
 
 <button @click="showingAddModal = false; createUsersNameCommand()" type="button" name="button"> Save </button>
 </table>
 </div>
 
 <!-- /////////////////////////////////////////////////////////////////////////////// -->
+<div class="modal" id="editModal" v-if="showingEditModal">
+  <h2 class="title"> Edit UsersNameCommand  <button class="fright close" @click="showingEditModal = false"> <i class="fas fa-times-circle"></i> </button> </h2>
+
+<table class="form2">
+  <label for=""> user_id </label>
+  <input type="text" name="" value="" v-model="clickedUsersNameCommand.user_id">
+<br>
+  <label for=""> user_name </label>
+  <input type="text" name="" value="" v-model="clickedUsersNameCommand.user_name">
+<br>
+  <label for=""> command_name </label>
+  <input type="text" name="" value="" v-model="clickedUsersNameCommand.command_name">
+<br>
+
+<button @click="showingEditModal = false;updateUsersNameCommand()" type="button" name="button"> Update </button>
+
+</table>
 
 
-   <!-- {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]} -->
+</div>
+
+<!-- ///////////////////////////////////////////////////////////////////////// -->
+
+<div class="modal" id="deleteModal" v-if="showingDeleteModal">
+  <h2 class="title"> You are about to delete the following<button class="fright close" @click="showingDeleteModal = false"> <i class="far fa-times-circle"></i> </button> </h2>
+<p> Do you want to Delete the command number <span> {{clickedUsersNameCommand.user_id}} </span> associated to <span> {{clickedUsersNameCommand.user_name}} </span> with the name <span> {{ clickedUsersNameCommand.command_name }} </span> for sure </p>
+<button @click="showingDeleteModal = false;deleteUsersNameCommand()" type="button" name="button"> YES </button>
+<button @click="showingDeleteModal = false" type="button" name="button"> NO </button>
+
+</div>
 
 
 
@@ -79,20 +99,24 @@ export default {
   data () {
     return {
       showingAddModal:false,
+      showingEditModal:false,
+      showingDeleteModal:false,
       //UsersNameCommand: {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]},
+      // <!-- {"id":3,"name":"ngbvb frbf b","command":[{"id":1,"name":"Alpha100"},{"id":4,"name":"Delta"}]} -->
       // create a table = insert dinnes => CRUD THEM
-      UsersNameCommand: {id:'',name:'', command:[{id:'',name:''},{id:'',name: ''}]},
-      names:[]
+      usersNameCommand: { user_id:'', user_name:'', command_name:''},
+      names:[],
+      clickedUsersNameCommand:{}
     }
   },
   mounted:function(){
     console.log('mounted from page 30');
-    this.getUsersNameCommand();
+    this.getUsersNameCommand2();
   },
   methods:{
-    getUsersNameCommand:function(){
-      axios.get('http://localhost:3007/users/name').then((response) => {
-        console.log('getUsersNameCommand', response);
+    getUsersNameCommand2:function(){
+      axios.get('http://localhost:3007/users/display/').then((response) => {
+        console.log('getUsersNameCommand2', response);
         if (response.data.error) {
           app.errorMesssage = response.data.message;
         } else {
@@ -102,18 +126,67 @@ export default {
       })
     },
     createUsersNameCommand: function(){
-      // equiv of an insert inside of  A TABLE getUsersNameCommand() - a table which dos not exist AT ALL
-      console.log("createUsersNameCommand");
-      axios.post('http://localhost:3007/users/name', this.UsersNameCommand).then((response) => {
-      console.log('ligne 104', response);
-      //   this.UsersNameCommand = {id:'', name:'', command:[{id:'',name:''},{id:'',name: ''}]};
-      //   if (response.data.error) {
-      //     console.log('createUsersNameCommand  ERROR');
-      //   } else {
-      //     console.log('createUsersNameCommand NO ERROR');
-      //     this.getUsersNameCommand();
-      //   }
-       })
+      console.log('function createUsersNameCommand');
+      var formData = this.toFormData(this.usersNameCommand);
+      axios.post('http://localhost:3007/users/display/', this.usersNameCommand).then((response) => {
+        console.log('createUsersNameCommand response is ', response);
+        console.log('this.UsersNameCommand', this.usersNameCommand);
+        console.log('2- toForm Data', formData);
+        this.usersNameCommand = {  user_id:'', user_name:'', command_name:''};
+        if (response.data.error) {
+          console.log('///////// createUsersNameCommand error ////////////');
+          app.errorMessage = response.data.message;
+        } else {
+          console.log('/// createUsersNameCommand NO ERROR ///');
+          console.log('this.UsersNameCommand =', this.usersNameCommand);
+          this.getUsersNameCommand2()
+        }
+      })
+    },
+    updateUsersNameCommand:function(){
+      console.log('==== updateUsersNameCommand ===');
+      console.log(this.clickedUsersNameCommand);
+      console.log(this.clickedUsersNameCommand.user_id + this.clickedUsersNameCommand.user_name + this.clickedUsersNameCommand.command_name );
+      axios.put('http://localhost:3007/users/display/'+ this.clickedUsersNameCommand.user_id, this.clickedUsersNameCommand).then((response) => {
+        console.log('updateUsersNameCommand', response);
+        this.clickedUsersNameCommand = {};
+        if (response.data.error) {
+          console.log('ERROR IN UPDATE');
+          app.errorMessage = response.data.message;
+        } else {
+          console.log('NO ERROR IN UPDATE');
+          app.sucessMessage = response.data.message;
+        }
+      })
+    },
+    deleteUsersNameCommand: function(){
+      console.log('=== deleteUsersNameCommand ===');
+      axios.delete('http://localhost:3007/users/display/'+ this.clickedUsersNameCommand.user_id).then((response) => {
+        this.clickedUsersNameCommand = {};
+        if (response.data.error) {
+          console.log('ERROR IN DELETE');
+          app.errorMessage = response.data.message;
+        } else {
+          console.log(' NO ERROR IN DELETE');
+          this.getUsersNameCommand2();
+          app.sucessMessage = response.data.message
+        }
+      })
+    },
+    selectUsersNameCommand(name){
+      this.clickedUsersNameCommand = name;
+      console.log('========= on a clicke sur ===========');
+      console.log(name);
+      console.log(name.user_id);
+      console.log(name.user_name);
+      console.log(name.command_name);
+    },
+    toFormData: function(obj){
+      var form_data = new FormData();
+      for (var key in obj) {
+        form_data.append(key, obj[key])
+      }
+      return form_data;
     }
 
   }
@@ -152,6 +225,8 @@ table li {
 table.list ul.list{
   color: red;
   font-size: 1vw;
+  writing-mode: vertical-lr;
+text-orientation: upright;
 }
 
 table.list td button{
@@ -167,8 +242,8 @@ table.list td button:hover{
   background: lightpink;
 }
 
-.modal#addModal{
-  height: 40vh;
+.modal#addModal, .modal#editModal, .modal#deleteModal{
+  height: 75vh;
   width: 40vw;
   border: 2px solid;
   margin: auto;
@@ -191,5 +266,11 @@ table.list td button:hover{
   position: fixed;
 top:4px;
 left: 287px
+}
+
+.modal#deleteModal span{
+  color: purple;
+  font-weight: 800;
+  text-decoration: underline;
 }
 </style>

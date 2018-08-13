@@ -9,8 +9,19 @@ module.exports = express.Router()
       .then(result => res.json(result))
       .catch(err => res.json(err))
   })
+  .post('/display', (req, res) =>{
+    const { user_id, user_name, command_name } = req.body;
+    model.createUsersNameCommand({ user_id, user_name, command_name })
+    .then(result => res.send(result))
+    .catch(err => console.log(err))
+  })
 .get('/name', (req,res) => {
   model.getUsersNameCommand()
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+})
+.get('/display',(req,res) => {
+  model.getUsersNameCommand2()
   .then(result => res.json(result))
   .catch(err => res.json(err))
 })
@@ -20,28 +31,19 @@ module.exports = express.Router()
   .then(result => res.json(result))
   .catch(err => res.json(err))
 })
+.put('/display/:user_id', (req,res) => {
+  const { user_id } = req.params;
+  const { user_name, command_name } = req.body;
+  model.updateUsersNameCommand({ user_id, user_name, command_name })
+  .then(result => res.json(result))
+  .catch(err => res.json(err))
+})
   .post('/', (req, res) => {
     const { lastname, firstname } = req.body;
     model.createUser({ firstname, lastname })
       .then(result => res.send(result))
       .catch(err => console.log(err))
   })
-.post('/',(req, res) => {
-  const { id, name, command } = req.body;
-  model.createUsersNameCommand({  id, name, command })
-  .then(result => res.send(result))
-  .catch(err => console.log(err))
-})
-
-
-
-
-
-
-
-
-
-
 
   /**
    * Move a card
@@ -73,6 +75,12 @@ module.exports = express.Router()
   .delete('/:id', (req, res) => {
     const { id } = req.params;
     model.deleteUser(id)
+      .then(result => res.json(result))
+      .catch(err => res.json(err))
+  })
+  .delete('/display/:user_id', (req, res) => {
+    const { user_id } = req.params;
+    model.deleteUsersNameCommand(user_id)
       .then(result => res.json(result))
       .catch(err => res.json(err))
   })
