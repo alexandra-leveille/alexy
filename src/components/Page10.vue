@@ -24,6 +24,8 @@ style="width:100%; height:400px"
 v-for="(m, index) in markers"
 :position="m.position"
 @click="center=m.position"
+:clickable="true"
+:draggable="true"
 ></gmap-marker>
 </gmap-map>
     </div>

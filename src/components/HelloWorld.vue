@@ -59,7 +59,8 @@
     <td> <button @click="showingAddModal = false; createUser()"> Save </button> </td>
     </tr>
 
-  </table> </div>
+  </table>
+</div>
 </div>
 </div>
 <!-- //////////////////////////////////////////////////////////////////////////////// -->

@@ -5,8 +5,14 @@ import Hello from '@/components/Hello'
 import PostsManager from '@/components/PostsManager'
 import HelloWorld from '@/components/HelloWorld'
 import Maps from '@/components/Maps'
+import Maps2 from '@/components/Maps2'
+import Maps3 from '@/components/Maps3'
+import Maps4 from '@/components/Maps4'
+import Maps5 from '@/components/Maps5'
 import Home from '@/components/Home'
 import Front from '@/components/Front'
+import Fillers from '@/components/Fillers'
+import Fillers2 from '@/components/Fillers2'
 import Page10 from '@/components/Page10'
 import Page20 from '@/components/Page20'
 import Page30 from '@/components/Page30'
@@ -37,6 +43,35 @@ const router = new Router({
       path: '/Maps',
       name: 'Maps',
       component: Maps
+    },
+    {
+      path: '/Fillers',
+      name: 'Fillers',
+      component: Fillers
+    },
+    {
+        path: '/Fillers2',
+        name: 'Fillers2',
+        component: Fillers2
+    },
+    {
+      path: '/Maps2',
+      name: 'Maps2',
+      component: Maps2
+    },
+    {
+      path: '/Maps3',
+      name: 'Maps3',
+      component: Maps3
+    },{
+      path: '/Maps4',
+      name: 'Maps4',
+      component: Maps4
+    },
+    {
+      path: '/Maps5',
+      name: 'Maps5',
+      component: Maps5
     },
     {
       path: '/Home',

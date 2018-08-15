@@ -1,3 +1,28 @@
+//////////// gogole maps //////////////////////
+- Help on vue-google-maps : https://github.com/xkjyeah/vue-google-maps/issues/181
+- vue google maps = https://www.npmjs.com/package/vue2-google-maps
+- Api google maps = AIzaSyBkcg913HkHG-5aHYeow1Vj9XWSFBFlF7A
+- google map = https://alligator.io/vuejs/vue-google-maps/google map = https://alligator.io/vuejs/vue-google-maps/
+- https://www.npmjs.com/package/vue2-google-maps
+- https://github.com/GuillaumeLeclerc/vue-google-maps/blob/master/src/components/marker.vue
+- https://lodash.com/
+- https://serversideup.net/displaying-resources-google-map-vue-js/
+- https://forum.vuejs.org/t/update-center-of-a-google-maps/2202
+- https://code.tutsplus.com/tutorials/code-a-real-time-nativescript-app-geolocation-and-google-maps--cms-29001
+- https://www.google.fr/search?rlz=1C1CHBD_frFR774FR774&ei=mtdyW8zzAeKOlwSbwITACw&q=api+geolocation+CHROME&oq=api+geolocation+CHROME&gs_l=psy-ab.3..0i22i30k1l3.1318.2236.0.2479.7.7.0.0.0.0.84.515.7.7.0....0...1c.1.64.psy-ab..0.7.509...0j0i22i10i30k1j0i8i13i30k1.0.owUW4mmEki8
+- https://www.google.fr/search?rlz=1C1CHBD_frFR774FR774&ei=mtdyW8zzAeKOlwSbwITACw&q=api+geolocation+CHROME&oq=api+geolocation+CHROME&gs_l=psy-ab.3..0i22i30k1l3.1318.2236.0.2479.7.7.0.0.0.0.84.515.7.7.0....0...1c.1.64.psy-ab..0.7.509...0j0i22i10i30k1j0i8i13i30k1.0.owUW4mmEki8
+- https://github.com/vuejs-templates/webpack/issues/121
+
+
+
+
+
+
+
+
+
+
+
 just in case docker is doing pulling fs layer
 docker-machine restart
 docker-machine env
@@ -6,7 +31,7 @@ docker-machine env
 okta version 1 = https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node
 
 https://github.com/axios/axios/issues/1529
-Help on vue-google-maps : https://github.com/xkjyeah/vue-google-maps/issues/181
+
 
 path to dist = C:\Users\Hi 2017\alexy\dist
 this.endpointUrl = 'http://app:5000';
@@ -28,9 +53,9 @@ axios(options)
     });
 
 OKTA = https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node
-vue google maps = https://www.npmjs.com/package/vue2-google-maps
 
-Api google maps = AIzaSyBkcg913HkHG-5aHYeow1Vj9XWSFBFlF7A
+
+
 Connect as such = http://192.168.99.100:8087/?pgsql=db&username=alexy&db=alexydb&ns=public&select=users
 ////////////////////////////////////////////////////////////////////
 la arrow function elle est transparente t n'apas de this et prend le this au dessus
@@ -133,7 +158,7 @@ VALUES
   dev-976497
 
 
-google map = https://alligator.io/vuejs/vue-google-maps/
+
 
 
 tutorial git ssh = https://help.github.com/articles/checking-for-existing-ssh-keys/
@@ -400,3 +425,60 @@ AND ALSO
 <li v-for="rest in UsersNameCommand.command">
 <input type="text" name="" value="" v-model="rest.name">
 </li>
+
+
+
+//////////// google maps trial //////////////
+<template>
+  <div id="app">
+    <input ref="autocomplete"
+        placeholder="Search"
+        class="search-location"
+        onfocus="value = ''"
+        type="text" />
+  </div>
+</template>
+
+<script>
+import * as VueGoogleMaps from 'vue2-google-maps'
+export default {
+  mounted() {
+    this.autocomplete.addListener('place_changed', () => {
+    let place = this.autocomplete.getPlace();
+    let ac = place.address_components;
+    let lat = place.geometry.location.lat();
+    let lon = place.geometry.location.lng();
+    let city = ac[0]["short_name"];
+
+    console.log(`The user picked ${city} with the coordinates ${lat}, ${lon}`);
+  });
+  }
+}
+</script>
+<style>
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #dcdde1;
+  color: #2f3640;
+  padding: 3rem;
+}
+
+.search-location {
+  display: block;
+  width: 60vw;
+  margin: 0 auto;
+  margin-top: 5vw;
+  font-size: 20px;
+  font-weight: 400;
+  outline: none;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+</style>
