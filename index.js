@@ -29,6 +29,7 @@ app.get('/', (req,res) => {
 app.use('/users', require('./controllers/user.js'))
 app.use('/fillers', require('./controllers/filler.js'))
 app.use('/command', require('./controllers/command.js'))
+app.use('/items', require('./controllers/item.js'))
 
 const port = process.env.PORT || 3007
 

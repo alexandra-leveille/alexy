@@ -13,6 +13,9 @@ import Home from '@/components/Home'
 import Front from '@/components/Front'
 import Fillers from '@/components/Fillers'
 import Fillers2 from '@/components/Fillers2'
+import Fillers3 from '@/components/Fillers3'
+import Fillers4 from '@/components/Fillers4'
+import Fillers5 from '@/components/Fillers5'
 import Page10 from '@/components/Page10'
 import Page20 from '@/components/Page20'
 import Page30 from '@/components/Page30'
@@ -53,6 +56,21 @@ const router = new Router({
         path: '/Fillers2',
         name: 'Fillers2',
         component: Fillers2
+    },
+    {
+        path: '/Fillers3',
+        name: 'Fillers3',
+        component: Fillers3
+    },
+    {
+        path: '/Fillers4',
+        name: 'Fillers4',
+        component: Fillers4
+    },
+    {
+        path: '/Fillers5',
+        name: 'Fillers5',
+        component: Fillers5
     },
     {
       path: '/Maps2',

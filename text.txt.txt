@@ -482,3 +482,190 @@ body {
   border-radius: 10px;
 }
 </style>
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ container vuetify \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+<v-container grid-list-md text-xs-center>
+  <v-layout row wrap>
+    <v-flex xs12>
+      <v-card dark color="red darken-4">
+        <v-card-text class="px-0">12</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex v-for="i in 2" :key="`6${i}`" xs6>
+      <v-card dark color="orange">
+        <v-card-text class="px-0">6</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex v-for="i in 3" :key="`4${i}`" xs4>
+      <v-card dark color="cyan">
+        <v-card-text class="px-0">4</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex v-for="i in 4" :key="`3${i}`" xs3>
+      <v-card dark color="purple">
+        <v-card-text class="px-0">3</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex v-for="i in 6" :key="`2${i}`" xs2>
+      <v-card dark color="pink">
+        <v-card-text class="px-0">2</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex v-for="i in 12" :key="`1${i}`" xs1>
+      <v-card dark color="green">
+        <v-card-text class="px-0">1</v-card-text>
+      </v-card>
+    </v-flex>
+  </v-layout>
+</v-container>
+
+
+///////////////////////////////////////////////////////////////////////////////
+<v-container grid-list-md text-xs-center>
+  <v-layout row wrap>
+
+    <v-flex v-for="i in 2" :key="`6${i}`" xs6>
+      <v-card dark color="orange">
+        <v-card-text class="px-0">6</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex v-for="i in 3" :key="`4${i}`" xs4>
+      <v-card dark color="cyan">
+        <v-card-text class="px-0">4</v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex v-for="i in 6" :key="`2${i}`" xs2>
+      <v-card dark color="pink">
+        <v-card-text class="px-0">2</v-card-text>
+      </v-card>
+    </v-flex>
+
+  </v-layout>
+</v-container>
+
+///////////////////////////////////////////////
+<v-container grid-list-md text-xs-center>
+  <v-layout row wrap>
+
+    <v-flex v-for="i in 2" :key="`6${i}`" xs6>
+      <v-card dark color="orange">
+        <v-card-text class="px-0">6</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex v-for="i in 3" :key="`4${i}`" xs4>
+      <v-card dark color="cyan">
+        <v-card-text class="px-0">4</v-card-text>
+      </v-card>
+    </v-flex>
+
+    <v-flex v-for="i in 6" :key="`2${i}`" xs2>
+      <v-card dark color="pink">
+        <v-card-text class="px-0">2</v-card-text>
+      </v-card>
+    </v-flex>
+
+  </v-layout>
+</v-container>
+
+/////////////////////////////// new container //////////////////////////////
+<v-container fluid grid-list-md text-xs-center>
+
+  <v-layout row>
+    <v-flex xs4 order-md1 >
+      <v-card dark tile flat color="red lighten-1">
+        <v-card-text>#1</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex xs6 order-md2 >
+      <v-card dark tile flat color="red lighten-2">
+        <v-card-text>#2</v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex xs2 order-md3>
+      <v-card dark tile flat color="red darken-1">
+        <v-card-text>#3</v-card-text>
+      </v-card>
+    </v-flex>
+  </v-layout>
+<hr>
+<v-layout row>
+<v-flex xs4 order-md1 >
+<v-card dark tile flat color="red lighten-1">
+  <v-card-text>#1</v-card-text>
+</v-card>
+</v-flex>
+<v-flex xs6 order-md2 >
+<v-card dark tile flat color="red lighten-2">
+  <v-card-text>#2</v-card-text>
+</v-card>
+</v-flex>
+<v-flex xs2 order-md3>
+<v-card dark tile flat color="red darken-1">
+  <v-card-text>#3</v-card-text>
+</v-card>
+</v-flex>
+</v-layout>
+<hr>
+<v-layout row>
+<v-flex xs4 order-md1 >
+<v-card dark tile flat color="red lighten-1">
+  <v-card-text>#1</v-card-text>
+</v-card>
+</v-flex>
+<v-flex xs6 order-md2 >
+<v-card dark tile flat color="red lighten-2">
+  <v-card-text>#2</v-card-text>
+</v-card>
+</v-flex>
+<v-flex xs2 order-md3>
+<v-card dark tile flat color="red darken-1">
+  <v-card-text>#3</v-card-text>
+</v-card>
+</v-flex>
+</v-layout>
+<hr>
+<v-layout row>
+<v-flex xs4 order-md1 >
+<v-card dark tile flat color="red lighten-1">
+  <v-card-text>#1</v-card-text>
+</v-card>
+</v-flex>
+<v-flex xs6 order-md2 >
+<v-card dark tile flat color="red lighten-2">
+  <v-card-text>#2</v-card-text>
+</v-card>
+</v-flex>
+<v-flex xs2 order-md3>
+<v-card dark tile flat color="red darken-1">
+  <v-card-text>#3</v-card-text>
+</v-card>
+</v-flex>
+</v-layout>
+</v-container>
+
+
+avatar https://vuetifyjs.com/en/components/lists#example-avatar-three-lines
+
+///////////////////////////////CREATION OF TABLE ITEMS ///////////////////////
+CREATE TABLE items
+(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255),
+type VARCHAR(255),
+title VARCHAR(255),
+activity VARCHAR(255),
+price integer,
+dispo boolean
+);
+
+
+INSERT INTO items
+(name, type, title, activity, price, dispo)
+VALUES
+('Alphonse', 'Wolkswagen', 'lund 04 oct 2017 @ 8h', 'Faire le plein', 35, '0'),
+('Bernard', 'Lexus', 'lund 04 oct 2017 @ 12h', 'Faire le 1/2', 35, '1'),
+('Celine', 'Mercedes', 'mer 06 oct 2017 @ 10h', 'Faire le 1/4', 15, '1'),
+('Daniel', 'Wolkswagen', 'jeu 07 oct 2017 @ 11h', 'Faire le 1/2', 35, '0'),
+('Etienne', 'Wolkswagen', 'dim 10 oct 2017 @ 14h', 'Faire le plein', 55, '0');
