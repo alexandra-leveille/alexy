@@ -17,11 +17,7 @@
 <p> Your commands are just the following : {{range.command}}</p>
 <li v-for="order in range.command ">
 order number {{order.id}} corresponds to {{order.name}}
-
 </li>
-
-
-
 </h3>
 </div>
 
@@ -31,8 +27,6 @@ order number {{order.id}} corresponds to {{order.name}}
     <th> name </th>
     <th> Command </th>
   </tr>
-
-
 
   <tr v-for="range in ranges">
 <td> {{range.id}} </td>

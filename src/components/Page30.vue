@@ -45,7 +45,7 @@
 </table>
 </div>
 
-<!-- /////////////////////////////////////////////////////////////////////////////// -->
+                  <!-- /////////////////////////////////////////////////////////////////////////////// -->
 <div class="modal" id="editModal" v-if="showingEditModal">
   <h2 class="title"> Edit UsersNameCommand  <button class="fright close" @click="showingEditModal = false"> <i class="fas fa-times-circle"></i> </button> </h2>
 
@@ -76,16 +76,6 @@
 <button @click="showingDeleteModal = false" type="button" name="button"> NO </button>
 
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -167,7 +157,7 @@ export default {
           console.log('ERROR IN DELETE');
           app.errorMessage = response.data.message;
         } else {
-          console.log(' NO ERROR IN DELETE');
+          console.log('NO ERROR IN DELETE');
           this.getUsersNameCommand2();
           app.sucessMessage = response.data.message
         }

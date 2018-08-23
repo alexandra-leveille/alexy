@@ -94,12 +94,12 @@ nav ul.list {
 nav ul li.item{
   display: block;
   float: left;
-  height: auto;
+  height: 4vh;
   max-width: auto;
-  line-height: 9vh;
+  line-height: 4vh;
   text-align: center;
   margin-right: 1vw;
-  border: 2px solid;
+  border: 2px solid red;
 }
 
 nav ul li.item a{

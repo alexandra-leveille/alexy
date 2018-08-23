@@ -25,11 +25,6 @@
 </table>
 <!-- //////////////////////////////////////////////////////////////////////////////// -->
 
-
-
-
-
-
 <!-- ////////////////////////showingAddModal////////////////////////// -->
 <div class="modal" id="addModal" v-if="showingAddModal">
 <div class="modalContainer">
@@ -214,6 +209,8 @@ export default {
         } else {
           console.log('NO ERROR IN UPDATE');
           //this.getUsers();
+          console.log('ligne 212');
+          console.log(this.clickedUser.id,this.clickedUser.lastname,this.clickedUser.firstname);
           app.sucessMessage = response.data.message;
         }
       })
